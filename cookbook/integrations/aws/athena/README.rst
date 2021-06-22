@@ -1,7 +1,13 @@
+######
+Athena
+######
+
 Executing Athena Queries
 =======================
-Flyte backend can be connected withathena. Once enabled it can allow you to query a athena service (e.g. Qubole) and retrieve typed schema (optionally).
+Flyte backend can be connected with athena. Once enabled it can allow you to query a athena service (e.g. Qubole) and retrieve typed schema (optionally).
 This section will provide how to use the athena Query Plugin using flytekit python
+=======
+:nosearch:
 
 Installation
 ------------
@@ -20,4 +26,4 @@ Configuring the backend to get athena working
 -------------------------------------------
 .. todo:
 
-This is coming soon.
+This is coming soon. 🛠
