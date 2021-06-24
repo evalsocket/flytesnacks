@@ -79,6 +79,6 @@ def manipulate_athena_schema(s: FlyteSchema) -> FlyteSchema:
 
 
 @workflow
-def full_hive_demo_wf(country_iso_code: str) -> FlyteSchema:
+def full_athena_wf(country_iso_code: str) -> FlyteSchema:
     demo_schema = athena_task_templatized_query(iso_code=country_iso_code)
     return manipulate_athena_schema(s=demo_schema)
