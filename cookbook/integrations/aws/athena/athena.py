@@ -24,7 +24,12 @@ def no_io_wf():
 
 # %%
 # Of course, in real world applications we are usually more interested in using Athena to query a dataset.
-# In this case we assume that the vaccinations table exists and has been populated data according to this schema
+# In this case we've populated our vaccinations table with the publicly available dataset
+# `here <https://www.kaggle.com/gpreda/covid-world-vaccination-progress>`__.
+# For a primer on how upload a dataset, checkout of the official
+# `AWS docs <https://docs.aws.amazon.com/quicksight/latest/user/create-a-data-set-athena.html>`__.
+# The data is formatted according to this schema:
+#
 #     +----------------------------------------------+
 #     | country (string)                             |
 #     +----------------------------------------------+
@@ -57,17 +62,22 @@ def no_io_wf():
 #     | source_website (string)                      |
 #     +----------------------------------------------+
 #
-# Let's look out how we can parameterize our query to filter results for a specific country.
+# Let's look out how we can parameterize our query to filter results for a specific country, provided as a user input
+# specifying a country iso code.
 # We'll produce a FlyteSchema that we can use in downstream flyte tasks for further analysis or manipulation.
+# Note that we cache this output data so we don't have to re-run the query in future workflow iterations
+# should we decide to change how we manipulate data downstream
 
 athena_task_templatized_query = AthenaTask(
     name="sql.athena.w_io",
-    inputs=kwtypes(limit=int),
+    inputs=kwtypes(iso_code=str),
     task_config=AthenaConfig(database="vaccinations"),
     query_template="""
     SELECT * FROM vaccinations where iso_code like  {{ .inputs.iso_code }}
     """,
     output_schema_type=FlyteSchema,
+    cache=True,
+    cache_version="1.0",
 )
 
 # %%
