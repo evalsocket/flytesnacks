@@ -1,3 +1,10 @@
+"""
+Athena Query
+############
+
+This example shows how to use a Flyte AthenaTask to execute a query.
+"""
+
 from flytekit import dynamic, kwtypes, task, workflow
 from flytekit.types.file import FlyteFile
 from flytekit.types.schema import FlyteSchema
@@ -25,37 +32,38 @@ def no_io_wf():
 # %%
 # Of course, in real world applications we are usually more interested in using Athena to query a dataset.
 # In this case we assume that the vaccinations table exists and has been populated data according to this schema
-#     +----------------------------------------------+
-#     | country (string)                             |
-#     +----------------------------------------------+
-#     | iso_code (string)                            |
-#     +----------------------------------------------+
-#     | date (string)                                |
-#     +----------------------------------------------+
-#     | total_vaccinations (string)                  |
-#     +----------------------------------------------+
-#     | people_vaccinated (string)                   |
-#     +----------------------------------------------+
-#     | people_fully_vaccinated (string)             |
-#     +----------------------------------------------+
-#     | daily_vaccinations_raw (string)              |
-#     +----------------------------------------------+
-#     | daily_vaccinations (string)                  |
-#     +----------------------------------------------+
-#     | total_vaccinations_per_hundred (string)      |
-#     +----------------------------------------------+
-#     | people_vaccinated_per_hundred (string)       |
-#     +----------------------------------------------+
-#     | people_fully_vaccinated_per_hundred (string) |
-#     +----------------------------------------------+
-#     | daily_vaccinations_per_million (string)      |
-#     +----------------------------------------------+
-#     | vaccines (string)                            |
-#     +----------------------------------------------+
-#     | source_name (string)                         |
-#     +----------------------------------------------+
-#     | source_website (string)                      |
-#     +----------------------------------------------+
+#
+# +----------------------------------------------+
+# | country (string)                             |
+# +----------------------------------------------+
+# | iso_code (string)                            |
+# +----------------------------------------------+
+# | date (string)                                |
+# +----------------------------------------------+
+# | total_vaccinations (string)                  |
+# +----------------------------------------------+
+# | people_vaccinated (string)                   |
+# +----------------------------------------------+
+# | people_fully_vaccinated (string)             |
+# +----------------------------------------------+
+# | daily_vaccinations_raw (string)              |
+# +----------------------------------------------+
+# | daily_vaccinations (string)                  |
+# +----------------------------------------------+
+# | total_vaccinations_per_hundred (string)      |
+# +----------------------------------------------+
+# | people_vaccinated_per_hundred (string)       |
+# +----------------------------------------------+
+# | people_fully_vaccinated_per_hundred (string) |
+# +----------------------------------------------+
+# | daily_vaccinations_per_million (string)      |
+# +----------------------------------------------+
+# | vaccines (string)                            |
+# +----------------------------------------------+
+# | source_name (string)                         |
+# +----------------------------------------------+
+# | source_website (string)                      |
+# +----------------------------------------------+
 #
 # Let's look out how we can parameterize our query to filter results for a specific country.
 # We'll produce a FlyteSchema that we can use in downstream flyte tasks for further analysis or manipulation.
