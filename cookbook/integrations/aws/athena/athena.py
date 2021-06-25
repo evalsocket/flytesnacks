@@ -1,5 +1,11 @@
-from flytekit import dynamic, kwtypes, task, workflow
-from flytekit.types.file import FlyteFile
+"""
+Athena Query
+############
+
+This example shows how to use a Flyte AthenaTask to execute a query.
+"""
+
+from flytekit import kwtypes, task, workflow
 from flytekit.types.schema import FlyteSchema
 from flytekitplugins.athena import AthenaConfig, AthenaTask
 

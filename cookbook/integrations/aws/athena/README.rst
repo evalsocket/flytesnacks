@@ -17,7 +17,7 @@ To use the flytekit athena plugin simply run the following:
 
     pip install flytekitplugins-athena
 
-No Need of a dockerfile
+No Need for a dockerfile
 ------------------------
 This plugin is purely a spec and since SQL is completely portable, it has no need to build a container. Thus this plugin examples do not have any Dockerfiles.
 
